@@ -6,24 +6,34 @@ using System.Threading.Tasks;
 
 namespace ObjectClasse
 {
-    internal class Ennemics : HP
+    internal class Ennemics 
     {
-        public int hp;
+        public int pdv;
         public int Dmg;
+        public Joueur j;
+        public int armure;
 
         public Ennemics ()  
         {
-            hp = 25;
+            pdv = 25;
             Dmg = 5;
+            armure = 0;
         }
 
-        public void Action() 
+        public void AttackJoueur()
         {
+            j.pdv = j.pdv - Dmg;
             Console.WriteLine("L'ennemie vous a infliger 5 pts de dégats");
+            Console.WriteLine("il vous reste "+j.pdv+" point de vie !");
+
         }
+        public void AttackAmure()
+        {
+            j.armure = j.armure - Dmg;
+            Console.WriteLine("L'ennemie vous a infliger 5 pts de dégats");
+            Console.WriteLine("il vous reste " + j.pdv + " point de vie !");
 
-
-
+        }
 
 
 

@@ -3,30 +3,35 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace ObjectClasse
 {
-    internal class Joueur :HP
+    internal class Joueur 
     {
+        Ennemics e;
         string joueur;
         public string nom;
         public int pdv;
         int energie;
+        public int armure;
         public Cartes[] main;
+        
 
         //constructeur
-        public Joueur()
+        public Joueur(Ennemics _e)
         {
+            e= _e;
             Console.WriteLine("Bienvenue ! Entre ton pseudo :");
             nom = Console.ReadLine();
-            Console.WriteLine($"A toi de jouer {nom}");
             pdv = 40;
+            armure = 0;
             energie = 3;
-            main= new Cartes[5];
+            main = new Cartes[5];
+            Console.WriteLine($"A toi de jouer {nom}, tu as {pdv} PV");
 
-            main[0] = new CarteAttaque();
-            main[1] = new CartesDefense();
-            main[2] = new CartesDefense();
-            main[3] = new CarteAttaque();
-            main[4] = new CartesDefense();
-
+            main[0] = new CarteAttaque(_e);
+            main[1] = new CartesDefense(this);
+            main[2] = new CartesDefense(this);
+            main[3] = new CarteAttaque(_e);
+            main[4] = new CartesDefense(this);
+           
         }
 
 

@@ -7,21 +7,23 @@ using System.Threading.Tasks;
 
 class CarteAttaque : Cartes
 {
-    int degat;
+    int dmg;
     int energie;
-
-    public CarteAttaque() 
+    Ennemics e;
+    public CarteAttaque(Ennemics _e) 
     {
-        degat = 5;
+        e = _e;
+        dmg = 5;
         energie = 1;
         nom = "Carte Attaque";
     }
     public override void Application() 
     {
+        e.pdv = e.pdv - dmg;
         Console.WriteLine("Tu as infliger 5 points de dégats");
-    
+        Console.WriteLine("il reste" + e.pdv + "PV");
     } 
-
+    
 
 
 }
